@@ -153,7 +153,7 @@ export default function RegisterPage() {
                     <span>Strength:</span>
                     <span style={{ fontWeight: 700, color: strength.color }}>{strength.label}</span>
                   </div>
-                  <div style={{ height: '4px', width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '2px', overflow: 'hidden' }}>
+                  <div style={{ height: '4px', width: '100%', background: '#E2E8F0', borderRadius: '2px', overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: strength.width, background: strength.color, transition: 'all 0.3s' }} />
                   </div>
                 </div>
@@ -216,9 +216,9 @@ export default function RegisterPage() {
                   style={{
                     padding: '0.75rem 0.5rem',
                     borderRadius: 'var(--radius-md)',
-                    border: role === 'USER' ? '2px solid var(--primary-color)' : '1px solid var(--border-color)',
-                    background: role === 'USER' ? 'rgba(110, 202, 195, 0.15)' : 'var(--surface-hover)',
-                    color: 'var(--text-main)',
+                    border: role === 'USER' ? '2px solid #2563EB' : '1px solid #CBD5E1',
+                    background: role === 'USER' ? 'rgba(37, 99, 235, 0.1)' : '#F8FAFC',
+                    color: '#0F172A',
                     cursor: 'pointer',
                     fontWeight: 600,
                     fontSize: '0.85rem',
@@ -230,7 +230,7 @@ export default function RegisterPage() {
                   }}
                 >
                   <span>👥 Normal User</span>
-                  <small style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 400 }}>Rate & review stores</small>
+                  <small style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>Rate & review stores</small>
                 </button>
 
                 <button
@@ -239,9 +239,9 @@ export default function RegisterPage() {
                   style={{
                     padding: '0.75rem 0.5rem',
                     borderRadius: 'var(--radius-md)',
-                    border: role === 'STORE_OWNER' ? '2px solid #10b981' : '1px solid var(--border-color)',
-                    background: role === 'STORE_OWNER' ? 'rgba(16, 185, 129, 0.15)' : 'var(--surface-hover)',
-                    color: 'var(--text-main)',
+                    border: role === 'STORE_OWNER' ? '2px solid #10b981' : '1px solid #CBD5E1',
+                    background: role === 'STORE_OWNER' ? 'rgba(16, 185, 129, 0.1)' : '#F8FAFC',
+                    color: '#0F172A',
                     cursor: 'pointer',
                     fontWeight: 600,
                     fontSize: '0.85rem',
@@ -253,7 +253,7 @@ export default function RegisterPage() {
                   }}
                 >
                   <span>🏪 Store Owner</span>
-                  <small style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 400 }}>Manage store & ratings</small>
+                  <small style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>Manage store & ratings</small>
                 </button>
               </div>
             </div>

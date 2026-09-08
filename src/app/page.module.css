@@ -2,8 +2,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #020617; /* Deep slate / pure black aesthetic */
-  color: #f8fafc;
+  background-color: #F8FAFC;
+  color: #0F172A;
   overflow-x: hidden;
   font-family: inherit;
 }
@@ -19,10 +19,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
-  background: rgba(2, 6, 23, 0.4);
+  background: rgba(255, 255, 255, 0.85);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid #E2E8F0;
   z-index: 100;
   transition: all 0.3s ease;
 }
@@ -34,12 +34,12 @@
   font-weight: 800;
   font-size: 1.4rem;
   letter-spacing: -0.02em;
-  color: white;
+  color: #0F172A;
   text-decoration: none;
 }
 
 .navLogoIcon {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #0D9488 100%);
   color: white;
   width: 36px;
   height: 36px;
@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
 }
 
 .navLinks {
@@ -58,15 +58,15 @@
 }
 
 .navLink {
-  color: #94a3b8;
+  color: #475569;
   text-decoration: none;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s ease;
 }
 
 .navLink:hover {
-  color: white;
+  color: #2563EB;
 }
 
 .navActions {
@@ -76,7 +76,7 @@
 }
 
 .loginBtn {
-  color: #94a3b8;
+  color: #475569;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
@@ -84,24 +84,24 @@
 }
 
 .loginBtn:hover {
-  color: white;
+  color: #2563EB;
 }
 
 .getStartedBtn {
-  background: white;
-  color: black;
-  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, #2563EB 0%, #0D9488 100%);
+  color: white;
+  padding: 0.65rem 1.5rem;
   border-radius: 99px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .getStartedBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
 /* Hero Section */
@@ -138,8 +138,8 @@
 .heroImage {
   border-radius: 24px;
   object-fit: cover;
-  box-shadow: 0 0 80px rgba(139, 92, 246, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+  border: 1px solid #E2E8F0;
 }
 
 .heroGlow {
@@ -149,7 +149,7 @@
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(13, 148, 136, 0.05) 40%, transparent 70%);
   z-index: -1;
   filter: blur(60px);
   pointer-events: none;
@@ -166,9 +166,9 @@
   gap: 0.75rem;
   padding: 0.5rem 1.25rem;
   border-radius: 99px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  color: #94a3b8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: #475569;
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 2.5rem;
@@ -177,13 +177,14 @@
 }
 
 .badgeHighlight {
-  color: #60a5fa;
+  color: #2563EB;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.75rem;
-  background: rgba(59, 130, 246, 0.2);
-  padding: 0.2rem 0.5rem;
+  background: rgba(37, 99, 235, 0.15);
+  padding: 0.2rem 0.6rem;
   border-radius: 99px;
+  font-weight: 700;
 }
 
 .title {
@@ -195,11 +196,11 @@
 }
 
 .titleGradient {
-  color: white;
+  color: #0F172A;
 }
 
 .titleAccent {
-  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #0D9488 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -207,7 +208,7 @@
 
 .tagline {
   font-size: clamp(1.1rem, 2vw, 1.25rem);
-  color: #94a3b8;
+  color: #475569;
   margin-bottom: 3rem;
   max-width: 600px;
   line-height: 1.7;
@@ -220,42 +221,40 @@
 }
 
 .btnPrimary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #0D9488 100%);
   color: white;
   padding: 1rem 2.5rem;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btnPrimary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
-  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.45);
 }
 
 .btnSecondary {
-  background: rgba(255, 255, 255, 0.03);
-  color: white;
+  background: #FFFFFF;
+  color: #0F172A;
   padding: 1rem 2.5rem;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
 }
 
 .btnSecondary:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: #F1F5F9;
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #94A3B8;
 }
 
 /* Features Bento Grid */
@@ -274,7 +273,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 60%);
   z-index: -1;
   pointer-events: none;
 }
@@ -289,7 +288,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
-  color: white;
+  color: #0F172A;
 }
 
 .bentoGrid {
@@ -300,17 +299,16 @@
 }
 
 .bentoCard {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 32px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 28px;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
 }
 
 .bentoCard::before {
@@ -319,14 +317,14 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
 }
 
 .bentoCard:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(96, 165, 250, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(96, 165, 250, 0.1) inset;
+  transform: translateY(-8px) scale(1.015);
+  border-color: #3B82F6;
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12), 0 0 20px rgba(37, 99, 235, 0.05) inset;
 }
 
 .bentoLarge {
@@ -337,26 +335,26 @@
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: rgba(59, 130, 246, 0.1);
+  background: #EFF6FF;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-  border: 1px solid rgba(96, 165, 250, 0.2);
-  color: #60a5fa;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  border: 1px solid #BFDBFE;
+  color: #2563EB;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
 }
 
 .featureTitle {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: white;
+  color: #0F172A;
 }
 
 .featureDesc {
-  color: #94a3b8;
+  color: #475569;
   line-height: 1.7;
   font-size: 1.05rem;
 }
@@ -364,9 +362,9 @@
 /* Footer */
 .footer {
   padding: 6rem 5% 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid #E2E8F0;
   margin-top: auto;
-  background: rgba(2, 6, 23, 0.8);
+  background: #F1F5F9;
 }
 
 .footerContent {
@@ -383,8 +381,8 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-weight: 700;
-  color: white;
+  font-weight: 800;
+  color: #0F172A;
   font-size: 1.2rem;
 }
 
@@ -394,14 +392,15 @@
 }
 
 .footerLink {
-  color: #64748b;
+  color: #475569;
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
 .footerLink:hover {
-  color: white;
+  color: #2563EB;
 }
 
 .copyright {
@@ -409,8 +408,8 @@
   text-align: center;
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  color: #64748b;
+  border-top: 1px solid #E2E8F0;
+  color: #64748B;
   font-size: 0.9rem;
 }
 
