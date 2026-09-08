@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import styles from '../auth.module.css';
-import dashboardStyles from '../dashboard/dashboard.module.css';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -20,7 +18,6 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Password validation rules
   const isMinLength = password.length >= 8 && password.length <= 16;
   const hasUppercase = /[A-Z]/.test(password);
   const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
@@ -78,17 +75,37 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className={dashboardStyles.dashboardTheme}>
-      <div className={styles.authContainer} style={{ padding: '3rem 1rem' }}>
-        <div className={styles.authCard} style={{ maxWidth: '520px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '2rem' }}>⭐</span>
-            <h1 className={styles.authLogo}>RatingApp</h1>
+    <div className={styles.authPageWrapper}>
+      <div className={styles.splitCard}>
+        {/* Left Branding Side */}
+        <div className={styles.brandSide}>
+          <div className={styles.networkPattern} />
+          
+          <div className={styles.brandTop}>
+            <Link href="/" className={styles.brandLogo}>
+              <div className={styles.brandLogoIcon}>⭐</div>
+              <span>RatingApp</span>
+              <span className={styles.brandDot} />
+            </Link>
           </div>
-          <p className={styles.authSubtitle}>Create your platform account</p>
+
+          <div className={styles.brandContent}>
+            <h2 className={styles.brandTitle}>Join RatingApp Today</h2>
+            <p className={styles.brandSubtitle}>
+              Create your account to rate stores, submit reviews, or manage your business storefront.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Form Side */}
+        <div className={styles.formSide} style={{ padding: '2.5rem 2.5rem' }}>
+          <div className={styles.formHeader}>
+            <h1 className={styles.formTitle}>Sign Up</h1>
+            <p className={styles.formSubtitle}>Create your platform account below.</p>
+          </div>
 
           {error && (
-            <div style={{ color: '#ef4444', background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: 'var(--radius-md)', padding: '0.85rem 1rem', marginBottom: '1.25rem', fontSize: '0.9rem', textAlign: 'center', fontWeight: 500 }}>
+            <div style={{ color: '#B91C1C', background: '#FEF2F2', border: '1px solid #FCA5A5', borderRadius: '10px', padding: '0.75rem 1rem', marginBottom: '1.25rem', fontSize: '0.875rem', fontWeight: 600 }}>
               ⚠️ {error}
             </div>
           )}
@@ -96,60 +113,66 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label htmlFor="name" className={styles.label}>Full Name</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className={styles.input}
-                placeholder="Min 7 characters (e.g. John Doe)"
-                minLength={7}
-                maxLength={60}
-                required
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.inputIcon}>👤</span>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className={styles.inputWithIcon}
+                  placeholder="John Doe (min 7 chars)"
+                  minLength={7}
+                  maxLength={60}
+                  required
+                />
+              </div>
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor="email" className={styles.label}>Email Address</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={styles.input}
-                placeholder="name@company.com"
-                required
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.inputIcon}>✉️</span>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={styles.inputWithIcon}
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor="password" className={styles.label}>Password</label>
-              <div style={{ position: 'relative' }}>
+              <div className={styles.inputWrapper}>
+                <span className={styles.inputIcon}>🔒</span>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={styles.input}
-                  placeholder="8–16 chars, 1 uppercase, 1 special"
+                  className={styles.inputWithIcon}
+                  placeholder="8–16 chars, 1 Upper, 1 Special"
                   minLength={8}
                   maxLength={16}
                   required
-                  style={{ paddingRight: '2.8rem' }}
+                  style={{ paddingRight: '2.5rem' }}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.1rem' }}
-                  title={showPassword ? 'Hide password' : 'Show password'}
+                  className={styles.togglePasswordBtn}
                 >
                   {showPassword ? '🙈' : '👁️'}
                 </button>
               </div>
 
               {password && (
-                <div style={{ marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>
+                <div style={{ marginTop: '0.4rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#64748B', marginBottom: '0.2rem' }}>
                     <span>Strength:</span>
                     <span style={{ fontWeight: 700, color: strength.color }}>{strength.label}</span>
                   </div>
@@ -162,109 +185,104 @@ export default function RegisterPage() {
 
             <div className={styles.formGroup}>
               <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
-              <div style={{ position: 'relative' }}>
+              <div className={styles.inputWrapper}>
+                <span className={styles.inputIcon}>🔑</span>
                 <input
                   type={showConfirm ? 'text' : 'password'}
                   id="confirmPassword"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className={styles.input}
-                  placeholder="Re-enter your password"
+                  className={styles.inputWithIcon}
+                  placeholder="Re-enter password"
                   required
                   style={{
-                    paddingRight: '2.8rem',
-                    borderColor: confirmPassword ? (passwordsMatch ? '#10b981' : '#ef4444') : undefined
+                    paddingRight: '2.5rem',
+                    borderColor: confirmPassword ? (passwordsMatch ? '#10B981' : '#EF4444') : undefined
                   }}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirm(!showConfirm)}
-                  style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.1rem' }}
-                  title={showConfirm ? 'Hide password' : 'Show password'}
+                  className={styles.togglePasswordBtn}
                 >
                   {showConfirm ? '🙈' : '👁️'}
                 </button>
               </div>
-              {confirmPassword && !passwordsMatch && (
-                <small style={{ color: '#ef4444', marginTop: '0.35rem', display: 'block', fontSize: '0.75rem' }}>❌ Passwords do not match</small>
-              )}
-              {confirmPassword && passwordsMatch && (
-                <small style={{ color: '#10b981', marginTop: '0.35rem', display: 'block', fontSize: '0.75rem' }}>✅ Passwords match!</small>
-              )}
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor="address" className={styles.label}>Address</label>
-              <textarea
-                id="address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className={styles.input}
-                placeholder="123 Main St, City (max 400 chars)"
-                rows={2}
-                maxLength={400}
-                required
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.inputIcon}>📍</span>
+                <input
+                  type="text"
+                  id="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className={styles.inputWithIcon}
+                  placeholder="123 Main St, City"
+                  maxLength={400}
+                  required
+                />
+              </div>
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="role" className={styles.label}>Account Type</label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginTop: '0.5rem' }}>
+              <label className={styles.label}>Account Type</label>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                 <button
                   type="button"
                   onClick={() => setRole('USER')}
                   style={{
-                    padding: '0.75rem 0.5rem',
-                    borderRadius: 'var(--radius-md)',
-                    border: role === 'USER' ? '2px solid #2563EB' : '1px solid #CBD5E1',
-                    background: role === 'USER' ? 'rgba(37, 99, 235, 0.1)' : '#F8FAFC',
+                    padding: '0.65rem 0.5rem',
+                    borderRadius: '10px',
+                    border: role === 'USER' ? '2px solid #0066FF' : '1px solid #E2E8F0',
+                    background: role === 'USER' ? '#EFF6FF' : '#FFFFFF',
                     color: '#0F172A',
                     cursor: 'pointer',
-                    fontWeight: 600,
-                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    fontSize: '0.825rem',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '0.25rem',
-                    transition: 'all 0.2s'
+                    gap: '0.15rem'
                   }}
                 >
                   <span>👥 Normal User</span>
-                  <small style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>Rate & review stores</small>
+                  <small style={{ fontSize: '0.675rem', color: '#64748B', fontWeight: 400 }}>Rate & review</small>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setRole('STORE_OWNER')}
                   style={{
-                    padding: '0.75rem 0.5rem',
-                    borderRadius: 'var(--radius-md)',
-                    border: role === 'STORE_OWNER' ? '2px solid #10b981' : '1px solid #CBD5E1',
-                    background: role === 'STORE_OWNER' ? 'rgba(16, 185, 129, 0.1)' : '#F8FAFC',
+                    padding: '0.65rem 0.5rem',
+                    borderRadius: '10px',
+                    border: role === 'STORE_OWNER' ? '2px solid #10B981' : '1px solid #E2E8F0',
+                    background: role === 'STORE_OWNER' ? '#ECFDF5' : '#FFFFFF',
                     color: '#0F172A',
                     cursor: 'pointer',
-                    fontWeight: 600,
-                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    fontSize: '0.825rem',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '0.25rem',
-                    transition: 'all 0.2s'
+                    gap: '0.15rem'
                   }}
                 >
                   <span>🏪 Store Owner</span>
-                  <small style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>Manage store & ratings</small>
+                  <small style={{ fontSize: '0.675rem', color: '#64748B', fontWeight: 400 }}>Manage store</small>
                 </button>
               </div>
             </div>
 
-            <button type="submit" className={styles.authButton} disabled={loading} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
-              {loading ? 'Creating Account...' : '✨ Create Account'}
+            <button type="submit" className={styles.blueAuthButton} disabled={loading} style={{ marginTop: '0.5rem' }}>
+              {loading ? 'Creating Account...' : 'Sign Up'}
             </button>
           </form>
 
-          <div className={styles.authFooter}>
-            Already have an account? <Link href="/login" className={styles.authLink}>Sign in</Link>
+          <div className={styles.formFooter}>
+            Already have an account? <Link href="/login" className={styles.signUpLink}>Sign In</Link>
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from '../auth.module.css';
-import dashboardStyles from '../dashboard/dashboard.module.css';
 
 function ResetPasswordForm() {
   const searchParams = useSearchParams();
@@ -53,8 +52,8 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>Invalid or missing password reset token.</p>
-        <Link href="/forgot-password" className="btn btn-primary" style={{ display: 'inline-block' }}>
+        <p style={{ color: '#64748B', marginBottom: '1rem' }}>Invalid or missing password reset token.</p>
+        <Link href="/forgot-password" className={styles.blueAuthButton} style={{ display: 'inline-block', textDecoration: 'none', textAlign: 'center' }}>
           Request New Link
         </Link>
       </div>
@@ -65,11 +64,11 @@ function ResetPasswordForm() {
     return (
       <div style={{ textAlign: 'center', padding: '1rem 0' }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-        <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-main)', fontWeight: 700 }}>Password Updated!</h3>
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+        <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#0F172A', fontWeight: 800 }}>Password Updated!</h3>
+        <p style={{ fontSize: '0.9rem', color: '#64748B', marginBottom: '1.5rem' }}>
           Your password has been successfully reset. You can now sign in with your new password.
         </p>
-        <Link href="/login" className="btn btn-primary" style={{ display: 'inline-block', width: '100%', textAlign: 'center', padding: '0.85rem' }}>
+        <Link href="/login" className={styles.blueAuthButton} style={{ display: 'block', textDecoration: 'none', textAlign: 'center' }}>
           Sign In Now
         </Link>
       </div>
@@ -78,36 +77,36 @@ function ResetPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem', textAlign: 'center' }}>
+      <p style={{ fontSize: '0.875rem', color: '#64748B', marginBottom: '1.25rem' }}>
         Enter your new password below.
       </p>
       
       {status === 'error' && (
-        <div style={{ padding: '0.75rem 1rem', backgroundColor: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#ef4444', borderRadius: 'var(--radius-md)', marginBottom: '1.25rem', fontSize: '0.875rem', textAlign: 'center', fontWeight: 500 }}>
+        <div style={{ padding: '0.75rem 1rem', backgroundColor: '#FEF2F2', border: '1px solid #FCA5A5', color: '#B91C1C', borderRadius: '10px', marginBottom: '1.25rem', fontSize: '0.875rem', fontWeight: 600 }}>
           ⚠️ {errorMessage}
         </div>
       )}
       
       <div className={styles.formGroup}>
         <label htmlFor="password" className={styles.label}>New Password</label>
-        <div style={{ position: 'relative' }}>
+        <div className={styles.inputWrapper}>
+          <span className={styles.inputIcon}>🔒</span>
           <input 
             type={showPassword ? 'text' : 'password'} 
             id="password" 
-            className={styles.input} 
+            className={styles.inputWithIcon} 
             placeholder="8–16 chars, 1 Upper, 1 Special" 
             required
             minLength={8}
             maxLength={16}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ paddingRight: '2.8rem' }}
+            style={{ paddingRight: '2.5rem' }}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.1rem' }}
-            title={showPassword ? 'Hide password' : 'Show password'}
+            className={styles.togglePasswordBtn}
           >
             {showPassword ? '🙈' : '👁️'}
           </button>
@@ -116,39 +115,33 @@ function ResetPasswordForm() {
 
       <div className={styles.formGroup}>
         <label htmlFor="confirmPassword" className={styles.label}>Confirm New Password</label>
-        <div style={{ position: 'relative' }}>
+        <div className={styles.inputWrapper}>
+          <span className={styles.inputIcon}>🔑</span>
           <input 
             type={showConfirm ? 'text' : 'password'} 
             id="confirmPassword" 
-            className={styles.input} 
+            className={styles.inputWithIcon} 
             placeholder="Re-enter new password" 
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             style={{
-              paddingRight: '2.8rem',
-              borderColor: confirmPassword ? (passwordsMatch ? '#10b981' : '#ef4444') : undefined
+              paddingRight: '2.5rem',
+              borderColor: confirmPassword ? (passwordsMatch ? '#10B981' : '#EF4444') : undefined
             }}
           />
           <button
             type="button"
             onClick={() => setShowConfirm(!showConfirm)}
-            style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.1rem' }}
-            title={showConfirm ? 'Hide password' : 'Show password'}
+            className={styles.togglePasswordBtn}
           >
             {showConfirm ? '🙈' : '👁️'}
           </button>
         </div>
-        {confirmPassword && !passwordsMatch && (
-          <small style={{ color: '#ef4444', marginTop: '0.35rem', display: 'block', fontSize: '0.75rem' }}>❌ Passwords do not match</small>
-        )}
-        {confirmPassword && passwordsMatch && (
-          <small style={{ color: '#10b981', marginTop: '0.35rem', display: 'block', fontSize: '0.75rem' }}>✅ Passwords match!</small>
-        )}
       </div>
       
-      <button type="submit" className={styles.authButton} disabled={status === 'loading'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1.25rem' }}>
-        {status === 'loading' ? 'Updating Password...' : '🔒 Update Password'}
+      <button type="submit" className={styles.blueAuthButton} disabled={status === 'loading'} style={{ marginTop: '1.25rem' }}>
+        {status === 'loading' ? 'Updating Password...' : 'Update Password'}
       </button>
     </form>
   );
@@ -156,19 +149,38 @@ function ResetPasswordForm() {
 
 export default function ResetPasswordPage() {
   return (
-    <div className={dashboardStyles.dashboardTheme}>
-      <div className={styles.authContainer}>
-        <div className={styles.authCard}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '2rem' }}>⭐</span>
-            <h1 className={styles.authLogo}>RatingApp</h1>
-          </div>
-          <p className={styles.authSubtitle}>Set a new password</p>
+    <div className={styles.authPageWrapper}>
+      <div className={styles.splitCard}>
+        {/* Left Branding Side */}
+        <div className={styles.brandSide}>
+          <div className={styles.networkPattern} />
           
-          <Suspense fallback={<div style={{ textAlign: 'center', color: 'var(--text-muted)' }}>Loading...</div>}>
+          <div className={styles.brandTop}>
+            <Link href="/" className={styles.brandLogo}>
+              <div className={styles.brandLogoIcon}>⭐</div>
+              <span>RatingApp</span>
+              <span className={styles.brandDot} />
+            </Link>
+          </div>
+
+          <div className={styles.brandContent}>
+            <h2 className={styles.brandTitle}>Reset Password</h2>
+            <p className={styles.brandSubtitle}>
+              Set up a secure new password for your RatingApp account.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Form Side */}
+        <div className={styles.formSide}>
+          <div className={styles.formHeader}>
+            <h1 className={styles.formTitle}>Set New Password</h1>
+            <p className={styles.formSubtitle}>Choose a strong password to protect your account.</p>
+          </div>
+          
+          <Suspense fallback={<div style={{ textAlign: 'center', color: '#64748B' }}>Loading...</div>}>
             <ResetPasswordForm />
           </Suspense>
-          
         </div>
       </div>
     </div>

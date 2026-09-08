@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from '../auth.module.css';
-import dashboardStyles from '../dashboard/dashboard.module.css'; 
 
 export default function ForgotPasswordPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -20,7 +19,6 @@ export default function ForgotPasswordPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      // Always show success to prevent email enumeration
       setSubmitted(true);
     } catch (error) {
       console.error(error);
@@ -30,48 +28,67 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className={dashboardStyles.dashboardTheme}>
-      <div className={styles.authContainer}>
-        <div className={styles.authCard}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '2rem' }}>⭐</span>
-            <h1 className={styles.authLogo}>RatingApp</h1>
-          </div>
-          <p className={styles.authSubtitle}>Reset your password</p>
+    <div className={styles.authPageWrapper}>
+      <div className={styles.splitCard}>
+        {/* Left Branding Side */}
+        <div className={styles.brandSide}>
+          <div className={styles.networkPattern} />
           
+          <div className={styles.brandTop}>
+            <Link href="/" className={styles.brandLogo}>
+              <div className={styles.brandLogoIcon}>⭐</div>
+              <span>RatingApp</span>
+              <span className={styles.brandDot} />
+            </Link>
+          </div>
+
+          <div className={styles.brandContent}>
+            <h2 className={styles.brandTitle}>Account Recovery</h2>
+            <p className={styles.brandSubtitle}>
+              Recover access to your RatingApp dashboard and manage your account settings securely.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Form Side */}
+        <div className={styles.formSide}>
+          <div className={styles.formHeader}>
+            <h1 className={styles.formTitle}>Forgot Password?</h1>
+            <p className={styles.formSubtitle}>Enter your email to receive password reset instructions.</p>
+          </div>
+
           {!submitted ? (
             <form onSubmit={handleSubmit}>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem', textAlign: 'center' }}>
-                Enter your registered email address and we&apos;ll send you a link to reset your password.
-              </p>
-              
               <div className={styles.formGroup}>
                 <label htmlFor="email" className={styles.label}>Email Address</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  className={styles.input} 
-                  placeholder="name@company.com" 
-                  required 
-                />
+                <div className={styles.inputWrapper}>
+                  <span className={styles.inputIcon}>✉️</span>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    className={styles.inputWithIcon} 
+                    placeholder="you@example.com" 
+                    required 
+                  />
+                </div>
               </div>
               
-              <button type="submit" className={styles.authButton} disabled={loading} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                {loading ? 'Sending Link...' : '✉️ Send Reset Link'}
+              <button type="submit" className={styles.blueAuthButton} disabled={loading} style={{ marginTop: '1rem' }}>
+                {loading ? 'Sending Link...' : 'Send Reset Link'}
               </button>
             </form>
           ) : (
             <div style={{ textAlign: 'center', padding: '1rem 0' }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✉️</div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-main)', fontWeight: 700 }}>Check your email</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#0F172A', fontWeight: 800 }}>Check your email</h3>
+              <p style={{ fontSize: '0.9rem', color: '#64748B', marginBottom: '1.5rem', lineHeight: 1.5 }}>
                 If an account exists for that email, we&apos;ve sent password reset instructions.
               </p>
             </div>
           )}
           
-          <div className={styles.authFooter}>
-            Remember your password? <Link href="/login" className={styles.authLink}>Back to login</Link>
+          <div className={styles.formFooter}>
+            Remember your password? <Link href="/login" className={styles.signUpLink}>Sign In</Link>
           </div>
         </div>
       </div>
