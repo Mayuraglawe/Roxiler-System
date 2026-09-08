@@ -4,7 +4,12 @@
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  background: linear-gradient(135deg, #E2E8F0 0%, #F1F5F9 50%, #E2E8F0 100%);
+  background-color: #F1F5F9;
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(79, 70, 229, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
+    radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
   position: relative;
   overflow: hidden;
 }
