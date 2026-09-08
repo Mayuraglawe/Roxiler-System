@@ -14,18 +14,12 @@ export async function POST(request: Request) {
     const currentUserId = (session.user as { id: string }).id;
     const currentUserRole = (session.user as { role?: string }).role || 'MEMBER';
 
-    // Verify current user is an ADMIN or Project Owner
+    // Verify current user is an ADMIN
     if (currentUserRole !== 'ADMIN') {
-      // Check if user owns any project to allow administrative invitation
-      const ownedProjectCount = await prisma.project.count({
-        where: { ownerId: currentUserId }
-      });
-      if (ownedProjectCount === 0) {
-        return NextResponse.json({ message: 'Only Admins can invite teammates to the platform' }, { status: 403 });
-      }
+      return NextResponse.json({ message: 'Only Admins can invite teammates to the platform' }, { status: 403 });
     }
 
-    const { name, email, password, role, projectId } = await request.json();
+    const { name, email, password, role } = await request.json();
 
     if (!email || !name) {
       return NextResponse.json({ message: 'Name and Email are required' }, { status: 400 });
@@ -36,7 +30,7 @@ export async function POST(request: Request) {
       where: { email },
     });
 
-    const userRole = role === 'ADMIN' ? 'ADMIN' : 'MEMBER';
+    const userRole = role === 'ADMIN' ? 'ADMIN' : role === 'STORE_OWNER' ? 'STORE_OWNER' : 'USER';
 
     if (!user) {
       // Auto-generate password if not provided
@@ -60,23 +54,6 @@ export async function POST(request: Request) {
         where: { id: user.id },
         data: updateRolePayload as unknown as Parameters<typeof prisma.user.update>[0]['data'],
       });
-    }
-
-    // If a projectId was provided, automatically assign user to the project as well
-    if (projectId) {
-      const existingMembership = await prisma.projectMember.findFirst({
-        where: { projectId, userId: user.id }
-      });
-
-      if (!existingMembership) {
-        await prisma.projectMember.create({
-          data: {
-            projectId,
-            userId: user.id,
-            role: userRole === 'ADMIN' ? 'ADMIN' : 'MEMBER'
-          }
-        });
-      }
     }
 
     const invitedUserObj = user as unknown as { id: string; name: string | null; email: string; role?: string };

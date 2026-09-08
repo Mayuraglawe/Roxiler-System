@@ -41,54 +41,55 @@ async function runTestSuite() {
 
   console.log(`✅ Teammate Invited & Created: ID=${invitedUser.id}, Email=${invitedUser.email}, Role=${(invitedUser as { role?: string }).role || teammateRole}`);
 
-  // Test 3: Project Creation & Work Allocation
-  console.log('\nTest 3: Project Creation & Work Allocation');
-  const project = await prisma.project.create({
+  // Test 3: Store Creation & Store Owner Assignment
+  console.log('\nTest 3: Store Creation & Owner Assignment');
+  const storeOwnerEmail = `store_owner_${timestamp}@nova.io`;
+  const storeOwner = await prisma.user.create({
     data: {
-      name: `Core Platform Sprint ${timestamp}`,
-      description: 'Test project for work allocation',
-      ownerId: adminUser.id,
-      members: {
-        create: [
-          { userId: adminUser.id, role: 'ADMIN' },
-          { userId: invitedUser.id, role: 'MEMBER' }
-        ]
-      }
+      name: 'Store Owner Tester',
+      email: storeOwnerEmail,
+      passwordHash: await bcrypt.hash('Password123!', 10),
+      role: 'STORE_OWNER',
     }
   });
 
-  console.log(`✅ Project Created: ID=${project.id}, Name=${project.name}`);
-
-  // Allot work (Create Task assigned to teammate)
-  const task = await prisma.task.create({
+  const store = await prisma.store.create({
     data: {
-      title: 'Setup Database Schema & Roles',
-      description: 'Implement multi-role access control in Prisma',
-      status: 'IN_PROGRESS',
-      projectId: project.id,
-      assigneeId: invitedUser.id
+      name: `Apex Retail Store ${timestamp}`,
+      address: '123 Innovation Boulevard',
+      email: `store_${timestamp}@retail.com`,
+      ownerId: storeOwner.id,
     }
   });
 
-  console.log(`✅ Work Allotted (Task Created): ID=${task.id}, Title="${task.title}", AssignedTo=${task.assigneeId}`);
+  console.log(`✅ Store Created: ID=${store.id}, Name=${store.name}, OwnerID=${store.ownerId}`);
 
-  // Test 4: Verify Team Directory Query
-  console.log('\nTest 4: Team Directory Query Verification');
-  const queryOptions = {
+  // Test 4: Rating Creation
+  console.log('\nTest 4: Store Rating Verification');
+  const rating = await prisma.rating.create({
+    data: {
+      score: 5,
+      userId: invitedUser.id,
+      storeId: store.id,
+    }
+  });
+
+  console.log(`✅ Rating Created: ID=${rating.id}, Score=${rating.score}, UserID=${rating.userId}, StoreID=${rating.storeId}`);
+
+  // Test 5: Verify User Directory Query
+  console.log('\nTest 5: User Directory Query Verification');
+  const teamMembers = await prisma.user.findMany({
     select: {
       id: true,
       name: true,
       email: true,
       role: true,
-      projects: { select: { name: true } }
     }
-  };
+  });
 
-  const teamMembers = await prisma.user.findMany(queryOptions as unknown as Parameters<typeof prisma.user.findMany>[0]);
-
-  console.log(`✅ Team Directory Query Returned ${teamMembers.length} users:`);
-  teamMembers.slice(-2).forEach(u => {
-    console.log(`   • ${u.name} (${u.email}) -> Role: ${(u as { role?: string }).role || 'MEMBER'}`);
+  console.log(`✅ User Directory Query Returned ${teamMembers.length} users:`);
+  teamMembers.slice(-3).forEach(u => {
+    console.log(`   • ${u.name} (${u.email}) -> Role: ${u.role}`);
   });
 
   console.log('\n🎉 ALL TEST CASES PASSED SUCCESSFULLY!');
