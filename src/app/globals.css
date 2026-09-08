@@ -22,6 +22,16 @@
   --accent-amber: #D97706;
   --accent-rose: #E11D48;
   
+  /* Faint Professional Color Tints */
+  --tint-indigo: #EEF2FF;
+  --tint-emerald: #F0FDF4;
+  --tint-amber: #FFFBEB;
+  --tint-purple: #F3E8FF;
+  --tint-sky: #F0F9FF;
+  --tint-cyan: #ECFEFF;
+  --tint-rose: #FFF1F2;
+  --tint-slate: #F1F5F9;
+  
   /* Neutrals */
   --bg-color: #F8FAFC;
   --surface-color: #FFFFFF;

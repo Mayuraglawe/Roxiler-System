@@ -90,9 +90,9 @@ export default function Home() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
             {[
-              { name: 'Apex Tech Superstore', category: 'Electronics & Gadgets', rating: '4.9 ★', reviews: '342 Reviews', owner: 'Alex Mercer', icon: '💻', badge: 'Top Rated' },
-              { name: 'Artisan Coffee Roasters', category: 'Café & Bakery', rating: '4.8 ★', reviews: '215 Reviews', owner: 'Elena Rostova', icon: '☕', badge: 'Trending' },
-              { name: 'Urban Threads Boutique', category: 'Fashion & Apparel', rating: '4.7 ★', reviews: '189 Reviews', owner: 'Marcus Vance', icon: '🛍️', badge: 'Popular' }
+              { name: 'Apex Tech Superstore', category: 'Electronics & Gadgets', rating: '4.9 ★', reviews: '342 Reviews', owner: 'Alex Mercer', icon: '💻', badge: 'Top Rated', badgeBg: '#EEF2FF', badgeColor: '#4F46E5' },
+              { name: 'Artisan Coffee Roasters', category: 'Café & Bakery', rating: '4.8 ★', reviews: '215 Reviews', owner: 'Elena Rostova', icon: '☕', badge: 'Trending', badgeBg: '#F0FDF4', badgeColor: '#059669' },
+              { name: 'Urban Threads Boutique', category: 'Fashion & Apparel', rating: '4.7 ★', reviews: '189 Reviews', owner: 'Marcus Vance', icon: '🛍️', badge: 'Popular', badgeBg: '#F3E8FF', badgeColor: '#7C3AED' }
             ].map((store, i) => (
               <div key={i} style={{
                 background: '#F8FAFC',
@@ -108,7 +108,7 @@ export default function Home() {
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                     <span style={{ fontSize: '2.5rem' }}>{store.icon}</span>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, background: '#EEF2FF', color: '#4F46E5', padding: '0.25rem 0.65rem', borderRadius: '99px' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, background: store.badgeBg, color: store.badgeColor, padding: '0.25rem 0.65rem', borderRadius: '99px', border: `1px solid ${store.badgeBg}` }}>
                       {store.badge}
                     </span>
                   </div>
@@ -142,32 +142,32 @@ export default function Home() {
           </div>
 
           <div className={styles.bentoGrid}>
-            <div className={`${styles.bentoCard} ${styles.bentoLarge}`}>
-              <div className={styles.featureIconWrapper}>⭐</div>
+            <div className={`${styles.bentoCard} ${styles.bentoLarge}`} style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #EEF2FF 100%)' }}>
+              <div className={styles.featureIconWrapper} style={{ background: '#EEF2FF', borderColor: '#C7D2FE', color: '#4F46E5' }}>⭐</div>
               <h3 className={styles.featureTitle}>1-to-5 Star Customer Ratings</h3>
               <p className={styles.featureDesc}>
                 Customers can search registered stores, submit 1 to 5 star ratings, modify their ratings anytime, and sort stores by average score or name.
               </p>
             </div>
 
-            <div className={styles.bentoCard}>
-              <div className={styles.featureIconWrapper}>👑</div>
+            <div className={styles.bentoCard} style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F3E8FF 100%)' }}>
+              <div className={styles.featureIconWrapper} style={{ background: '#F3E8FF', borderColor: '#E9D5FF', color: '#7C3AED' }}>👑</div>
               <h3 className={styles.featureTitle}>Admin Governance</h3>
               <p className={styles.featureDesc}>
                 Full platform oversight. Create users, assign roles (Admin, Store Owner, User), add new store profiles, inspect system stats, and delete records.
               </p>
             </div>
 
-            <div className={styles.bentoCard}>
-              <div className={styles.featureIconWrapper}>🏪</div>
+            <div className={styles.bentoCard} style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%)' }}>
+              <div className={styles.featureIconWrapper} style={{ background: '#F0FDF4', borderColor: '#BBF7D0', color: '#059669' }}>🏪</div>
               <h3 className={styles.featureTitle}>Store Owner Portal</h3>
               <p className={styles.featureDesc}>
                 Store owners access a dedicated dashboard to monitor customer satisfaction scores, inspect raters, and analyze average ratings.
               </p>
             </div>
 
-            <div className={`${styles.bentoCard} ${styles.bentoLarge}`}>
-              <div className={styles.featureIconWrapper}>🔒</div>
+            <div className={`${styles.bentoCard} ${styles.bentoLarge}`} style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%)' }}>
+              <div className={styles.featureIconWrapper} style={{ background: '#FFFBEB', borderColor: '#FDE68A', color: '#D97706' }}>🔒</div>
               <h3 className={styles.featureTitle}>Enterprise Authentication & Security</h3>
               <p className={styles.featureDesc}>
                 Powered by NextAuth credentials, Prisma ORM PostgreSQL schema, real-time client & server password validation, and secure password reset tokens.
