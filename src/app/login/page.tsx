@@ -45,6 +45,19 @@ function LoginForm() {
     }
   };
 
+  const fillDemoAccount = (role: 'admin' | 'owner' | 'user') => {
+    if (role === 'admin') {
+      setEmail('admin@storeapp.com');
+      setPassword('AdminPass123!');
+    } else if (role === 'owner') {
+      setEmail('owner@storeapp.com');
+      setPassword('OwnerPass123!');
+    } else {
+      setEmail('user@storeapp.com');
+      setPassword('UserPass123!');
+    }
+  };
+
   return (
     <>
       {justRegistered && (
@@ -58,6 +71,18 @@ function LoginForm() {
           ⚠️ {error}
         </div>
       )}
+
+      {/* Pro Demo Accounts Quick-Fill Bar */}
+      <div style={{ marginBottom: '1.25rem', padding: '0.85rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '12px' }}>
+        <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem', textAlign: 'center' }}>
+          ⚡ 1-Click Demo Credentials
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem' }}>
+          <button type="button" onClick={() => fillDemoAccount('admin')} style={{ padding: '0.45rem 0.2rem', fontSize: '0.75rem', fontWeight: 700, background: '#EFF6FF', color: '#2563EB', border: '1px solid #BFDBFE', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.2s' }}>👑 Admin</button>
+          <button type="button" onClick={() => fillDemoAccount('owner')} style={{ padding: '0.45rem 0.2rem', fontSize: '0.75rem', fontWeight: 700, background: '#F0FDF4', color: '#16A34A', border: '1px solid #BBF7D0', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.2s' }}>🏪 Owner</button>
+          <button type="button" onClick={() => fillDemoAccount('user')} style={{ padding: '0.45rem 0.2rem', fontSize: '0.75rem', fontWeight: 700, background: '#FDF4FF', color: '#9333EA', border: '1px solid #F5D0FE', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.2s' }}>👥 Customer</button>
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>

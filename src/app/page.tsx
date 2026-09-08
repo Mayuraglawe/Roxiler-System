@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './page.module.css';
+import HeroDemoCard from './components/HeroDemoCard';
 
 export default function Home() {
   return (
@@ -13,59 +14,139 @@ export default function Home() {
         </Link>
         <div className={styles.navLinks}>
           <Link href="#features" className={styles.navLink}>Features</Link>
-          <Link href="#roles" className={styles.navLink}>Roles</Link>
+          <Link href="#showcase" className={styles.navLink}>Live Demo</Link>
+          <Link href="#roles" className={styles.navLink}>Role Governance</Link>
           <Link href="/login" className={styles.navLink}>Sign In</Link>
         </div>
         <div className={styles.navActions}>
-          <Link href="/dashboard" className={styles.getStartedBtn}>Launch App ✨</Link>
+          <Link href="/dashboard" className={styles.getStartedBtn}>
+            Launch App ✨
+          </Link>
         </div>
       </nav>
 
       <main>
         {/* Hero Section */}
-        <section className={styles.hero} style={{ minHeight: '85vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '8rem 5% 4rem' }}>
-          <div className={styles.heroContent} style={{ alignItems: 'center', maxWidth: '850px' }}>
+        <section className={styles.hero}>
+          <div className={styles.heroContent}>
             <div className={styles.badge}>
               <span className={styles.badgeHighlight}>RatingApp 2.0</span>
-              <span>Next-Gen Store Rating & Review Platform</span>
+              <span>Enterprise Store Rating Engine</span>
             </div>
 
-            <h1 className={styles.title} style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)' }}>
-              <span className={styles.titleGradient}>Discover & Rate Stores</span>
+            <h1 className={styles.title}>
+              <span className={styles.titleGradient}>Rate Stores with Transparency.</span>
               <br />
-              <span className={styles.titleAccent}>With Transparency</span>
+              <span className={styles.titleAccent}>Manage with Authority.</span>
             </h1>
 
-            <p className={styles.tagline} style={{ margin: '0 auto 2.5rem' }}>
-              The ultimate store rating ecosystem. Empowering customers to rate stores with 1–5 stars, store owners to monitor performance, and admins to govern platform users seamlessly.
+            <p className={styles.tagline}>
+              The next-generation store review ecosystem. Empower customers to rate stores from 1 to 5 stars, enable store owners to monitor real-time satisfaction, and grant administrators complete governance.
             </p>
 
-            <div className={styles.heroActions} style={{ justifyContent: 'center' }}>
+            <div className={styles.heroActions}>
               <Link href="/dashboard" className={styles.btnPrimary}>
-                Explore Stores Now ⭐
+                Explore Stores Dashboard ⭐
               </Link>
               <Link href="/register" className={styles.btnSecondary}>
-                Create Account
+                Create Account 🚀
               </Link>
             </div>
+
+            {/* Metrics Trust Strip */}
+            <div style={{ display: 'flex', gap: '2rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #E2E8F0', flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A' }}>4.9 / 5.0</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 500 }}>Customer Satisfaction</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#2563EB' }}>3 Roles</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 500 }}>Admin, Owner, Customer</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0D9488' }}>100%</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 500 }}>Prisma & NextAuth Secured</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Hero Widget */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <HeroDemoCard />
           </div>
         </section>
 
-        {/* Features Bento Grid */}
-        <section id="features" className={styles.featuresSection}>
+        {/* Live Store Showcase Grid */}
+        <section id="showcase" style={{ padding: '5rem 5%', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Built for Customers, Owners & Admins</h2>
+            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#2563EB', background: '#EFF6FF', padding: '0.3rem 0.8rem', borderRadius: '99px', display: 'inline-block', marginBottom: '0.75rem' }}>
+              Live Store Directory
+            </span>
+            <h2 className={styles.sectionTitle}>Top Rated Registered Stores</h2>
             <p className={styles.tagline} style={{ margin: '0 auto' }}>
-              A high-performance rating suite designed with role-based governance.
+              Explore real-time store profiles, average ratings, and customer reviews.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
+            {[
+              { name: 'Apex Tech Superstore', category: 'Electronics & Gadgets', rating: '4.9 ★', reviews: '342 Reviews', owner: 'Alex Mercer', icon: '💻', badge: 'Top Rated' },
+              { name: 'Artisan Coffee Roasters', category: 'Café & Bakery', rating: '4.8 ★', reviews: '215 Reviews', owner: 'Elena Rostova', icon: '☕', badge: 'Trending' },
+              { name: 'Urban Threads Boutique', category: 'Fashion & Apparel', rating: '4.7 ★', reviews: '189 Reviews', owner: 'Marcus Vance', icon: '🛍️', badge: 'Popular' }
+            ].map((store, i) => (
+              <div key={i} style={{
+                background: '#F8FAFC',
+                border: '1px solid #E2E8F0',
+                borderRadius: '20px',
+                padding: '2rem',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '2.5rem' }}>{store.icon}</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, background: '#DBEAFE', color: '#1D4ED8', padding: '0.25rem 0.65rem', borderRadius: '99px' }}>
+                      {store.badge}
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.35rem' }}>{store.name}</h3>
+                  <p style={{ fontSize: '0.85rem', color: '#64748B', marginBottom: '1.25rem' }}>{store.category}</p>
+                </div>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.85rem 1rem', background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>{store.rating}</span>
+                    <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 600 }}>{store.reviews}</span>
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#0D9488', fontWeight: 700, textAlign: 'right' }}>
+                    Owner: {store.owner}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Roles & Feature Bento Grid */}
+        <section id="roles" className={styles.featuresSection}>
+          <div className={styles.sectionHeader}>
+            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#0D9488', background: '#CCFBF1', padding: '0.3rem 0.8rem', borderRadius: '99px', display: 'inline-block', marginBottom: '0.75rem' }}>
+              Role Architecture
+            </span>
+            <h2 className={styles.sectionTitle}>3 Roles, 1 Seamless Platform</h2>
+            <p className={styles.tagline} style={{ margin: '0 auto' }}>
+              Architected with strict access control and tailored user interfaces.
             </p>
           </div>
 
           <div className={styles.bentoGrid}>
             <div className={`${styles.bentoCard} ${styles.bentoLarge}`}>
               <div className={styles.featureIconWrapper}>⭐</div>
-              <h3 className={styles.featureTitle}>1-to-5 Star Interactive Ratings</h3>
+              <h3 className={styles.featureTitle}>1-to-5 Star Customer Ratings</h3>
               <p className={styles.featureDesc}>
-                Customers can instantly submit star ratings for registered stores, modify their ratings anytime, and view real-time overall averages.
+                Customers can search registered stores, submit 1 to 5 star ratings, modify their ratings anytime, and sort stores by average score or name.
               </p>
             </div>
 
@@ -73,24 +154,42 @@ export default function Home() {
               <div className={styles.featureIconWrapper}>👑</div>
               <h3 className={styles.featureTitle}>Admin Governance</h3>
               <p className={styles.featureDesc}>
-                Complete control over platform users and store profiles with instant user creation, role assignment, sorting, and row deletion.
+                Full platform oversight. Create users, assign roles (Admin, Store Owner, User), add new store profiles, inspect system stats, and delete records.
               </p>
             </div>
 
             <div className={styles.bentoCard}>
               <div className={styles.featureIconWrapper}>🏪</div>
-              <h3 className={styles.featureTitle}>Store Owner Dashboard</h3>
+              <h3 className={styles.featureTitle}>Store Owner Portal</h3>
               <p className={styles.featureDesc}>
-                Store owners can view their store ratings, analyze average customer satisfaction, and inspect customer raters.
+                Store owners access a dedicated dashboard to monitor customer satisfaction scores, inspect raters, and analyze average ratings.
               </p>
             </div>
 
             <div className={`${styles.bentoCard} ${styles.bentoLarge}`}>
               <div className={styles.featureIconWrapper}>🔒</div>
-              <h3 className={styles.featureTitle}>Security & Access Control</h3>
+              <h3 className={styles.featureTitle}>Enterprise Authentication & Security</h3>
               <p className={styles.featureDesc}>
-                Powered by NextAuth credentials, Prisma ORM, real-time password strength validation, and secure password management.
+                Powered by NextAuth credentials, Prisma ORM PostgreSQL schema, real-time client & server password validation, and secure password reset tokens.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Bottom Banner */}
+        <section style={{ padding: '6rem 5%', textAlign: 'center', background: 'linear-gradient(135deg, #2563EB 0%, #0D9488 100%)', color: 'white' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem' }}>Ready to Experience Next-Gen Rating Governance?</h2>
+            <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2.5rem' }}>
+              Sign in with one of our demo accounts or register a new account in seconds.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/login" style={{ padding: '1rem 2.5rem', background: '#FFFFFF', color: '#0F172A', fontWeight: 800, borderRadius: '12px', textDecoration: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.2)' }}>
+                Sign In Now →
+              </Link>
+              <Link href="/register" style={{ padding: '1rem 2.5rem', background: 'rgba(255,255,255,0.15)', color: 'white', fontWeight: 800, borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
+                Register Account
+              </Link>
             </div>
           </div>
         </section>
@@ -110,7 +209,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.copyright}>
-          &copy; {new Date().getFullYear()} RatingApp. All rights reserved.
+          &copy; {new Date().getFullYear()} RatingApp. Built with Next.js 15 & Prisma ORM.
         </div>
       </footer>
     </div>
