@@ -37,7 +37,7 @@ export default function HeroDemoCard() {
         left: 0,
         right: 0,
         height: '4px',
-        background: 'linear-gradient(90deg, #2563EB 0%, #0D9488 50%, #7C3AED 100%)',
+        background: 'linear-gradient(90deg, #4F46E5 0%, #2563EB 50%, #0D9488 100%)',
       }} />
 
       {/* Header */}
@@ -47,13 +47,13 @@ export default function HeroDemoCard() {
             width: '48px',
             height: '48px',
             borderRadius: '14px',
-            background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-            border: '1px solid #BFDBFE',
+            background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+            border: '1px solid #C7D2FE',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: '1.5rem',
-            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.12)'
+            boxShadow: '0 4px 12px rgba(79, 70, 229, 0.15)'
           }}>
             🏬
           </div>
@@ -69,7 +69,7 @@ export default function HeroDemoCard() {
 
       {/* Score Overview Box */}
       <div style={{
-        background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)',
+        background: 'linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 100%)',
         border: '1px solid #E2E8F0',
         borderRadius: '16px',
         padding: '1.25rem',
@@ -94,7 +94,7 @@ export default function HeroDemoCard() {
                 <div style={{
                   height: '100%',
                   width: idx === 0 ? '78%' : idx === 1 ? '16%' : '6%',
-                  background: 'linear-gradient(90deg, #F59E0B 0%, #2563EB 100%)',
+                  background: 'linear-gradient(90deg, #F59E0B 0%, #4F46E5 100%)',
                   borderRadius: '99px'
                 }} />
               </div>
@@ -143,8 +143,8 @@ export default function HeroDemoCard() {
         <div style={{
           fontSize: '0.8rem',
           fontWeight: 600,
-          color: '#2563EB',
-          background: 'rgba(37, 99, 235, 0.08)',
+          color: '#4F46E5',
+          background: 'rgba(79, 70, 229, 0.08)',
           padding: '0.4rem 0.8rem',
           borderRadius: '99px',
           display: 'inline-block'

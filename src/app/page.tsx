@@ -60,7 +60,7 @@ export default function Home() {
                 <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 500 }}>Customer Satisfaction</div>
               </div>
               <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#2563EB' }}>3 Roles</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#4F46E5' }}>3 Roles</div>
                 <div style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 500 }}>Admin, Owner, Customer</div>
               </div>
               <div>
@@ -79,7 +79,7 @@ export default function Home() {
         {/* Live Store Showcase Grid */}
         <section id="showcase" style={{ padding: '5rem 5%', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
           <div className={styles.sectionHeader}>
-            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#2563EB', background: '#EFF6FF', padding: '0.3rem 0.8rem', borderRadius: '99px', display: 'inline-block', marginBottom: '0.75rem' }}>
+            <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#4F46E5', background: '#EEF2FF', padding: '0.3rem 0.8rem', borderRadius: '99px', display: 'inline-block', marginBottom: '0.75rem' }}>
               Live Store Directory
             </span>
             <h2 className={styles.sectionTitle}>Top Rated Registered Stores</h2>
@@ -108,7 +108,7 @@ export default function Home() {
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                     <span style={{ fontSize: '2.5rem' }}>{store.icon}</span>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, background: '#DBEAFE', color: '#1D4ED8', padding: '0.25rem 0.65rem', borderRadius: '99px' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, background: '#EEF2FF', color: '#4F46E5', padding: '0.25rem 0.65rem', borderRadius: '99px' }}>
                       {store.badge}
                     </span>
                   </div>
@@ -177,7 +177,7 @@ export default function Home() {
         </section>
 
         {/* CTA Bottom Banner */}
-        <section style={{ padding: '6rem 5%', textAlign: 'center', background: 'linear-gradient(135deg, #2563EB 0%, #0D9488 100%)', color: 'white' }}>
+        <section style={{ padding: '6rem 5%', textAlign: 'center', background: 'linear-gradient(135deg, #4F46E5 0%, #2563EB 50%, #0D9488 100%)', color: 'white' }}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem' }}>Ready to Experience Next-Gen Rating Governance?</h2>
             <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2.5rem' }}>
